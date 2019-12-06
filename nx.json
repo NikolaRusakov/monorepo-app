@@ -1,0 +1,18 @@
+{
+  "npmScope": "fapp",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "fapp-e2e": {
+      "tags": []
+    },
+    "fapp": {
+      "tags": []
+    }
+  }
+}

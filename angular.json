@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "projects": {
+    "fapp": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/fapp",
+      "sourceRoot": "apps/fapp/src",
+      "prefix": "fapp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/fapp",
+            "index": "apps/fapp/src/index.html",
+            "main": "apps/fapp/src/main.ts",
+            "polyfills": "apps/fapp/src/polyfills.ts",
+            "tsConfig": "apps/fapp/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/fapp/src/favicon.ico", "apps/fapp/src/assets"],
+            "styles": ["apps/fapp/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fapp/src/environments/environment.ts",
+                  "with": "apps/fapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fapp:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/fapp/tsconfig.app.json",
+              "apps/fapp/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/fapp/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/fapp/jest.config.js",
+            "tsConfig": "apps/fapp/tsconfig.spec.json",
+            "setupFile": "apps/fapp/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "fapp-e2e": {
+      "root": "apps/fapp-e2e",
+      "sourceRoot": "apps/fapp-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/fapp-e2e/cypress.json",
+            "tsConfig": "apps/fapp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "fapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fapp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/fapp-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/fapp-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "fapp"
+}

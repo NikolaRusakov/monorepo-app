@@ -1,6 +1,10 @@
 # Add files here to ignore them from prettier formatting
 
-/dist
+package-lock.json
+dist
+node_modules
+www
+.firebase
 /coverage
 
 apps/ionic-fapp/node_modules/**

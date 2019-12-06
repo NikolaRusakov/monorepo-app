@@ -110,7 +110,8 @@
     "@nrwl/angular": "8.9.0",
     "@nstudio/ionic": "8.0.15",
     "@nstudio/angular": "8.0.15",
-    "@nstudio/web-angular": "8.0.15"
+    "@nstudio/web-angular": "8.0.15",
+    "tslint-config-prettier": "^1.15.0"
   },
   "xplat": {
     "prefix": "fapp",

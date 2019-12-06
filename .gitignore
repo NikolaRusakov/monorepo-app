@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+apps/ionic-fapp/node_modules/
+apps/ionic-fapp/android/
+apps/ionic-fapp/www/

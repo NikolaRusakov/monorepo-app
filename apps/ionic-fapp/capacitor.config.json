@@ -1,0 +1,11 @@
+{
+  "appId": "cz.rusakov.fapp",
+  "appName": "ionic-fapp",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "npmClient": "npm",
+  "linuxAndroidStudioPath": "/usr/local/bin/studio",
+  "server": {
+    "url": "http://localhost:8100"
+  }
+}

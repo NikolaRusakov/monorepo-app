@@ -41,3 +41,4 @@ Thumbs.db
 apps/ionic-fapp/node_modules/
 apps/ionic-fapp/android/
 apps/ionic-fapp/www/
+functions/node_modules/

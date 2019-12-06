@@ -21,8 +21,49 @@
             "polyfills": "apps/fapp/src/polyfills.ts",
             "tsConfig": "apps/fapp/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/fapp/src/favicon.ico", "apps/fapp/src/assets"],
-            "styles": ["apps/fapp/src/styles.scss"],
+            "assets": [
+              "apps/fapp/src/favicon.ico",
+              "apps/fapp/src/assets",
+              "apps/fapp/src/manifest.webmanifest",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "apps/fapp/src/styles.scss",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "src/theme/variables.css"
+              }
+            ],
             "scripts": []
           },
           "configurations": {
@@ -53,7 +94,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/fapp/ngsw-config.json"
             }
           }
         },
@@ -81,7 +124,10 @@
               "apps/fapp/tsconfig.app.json",
               "apps/fapp/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/fapp/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/fapp/**"
+            ]
           }
         },
         "test": {
@@ -90,6 +136,30 @@
             "jestConfig": "apps/fapp/jest.config.js",
             "tsConfig": "apps/fapp/tsconfig.spec.json",
             "setupFile": "apps/fapp/src/test-setup.ts"
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "app:ionic-cordova-build",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:production",
+              "devServerTarget": "app:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app:build:production"
+            }
           }
         }
       }
@@ -115,8 +185,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/fapp-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/fapp-e2e/**"]
+            "tsConfig": [
+              "apps/fapp-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/fapp-e2e/**"
+            ]
           }
         }
       }
@@ -249,7 +324,9 @@
               "apps/ionic-fapp/tsconfig.spec.json",
               "apps/ionic-fapp/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -421,7 +498,9 @@
               "apps/ionic-web-fapp/tsconfig.spec.json",
               "apps/ionic-web-fapp/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {

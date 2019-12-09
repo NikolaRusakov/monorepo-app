@@ -125,10 +125,7 @@
               "apps/fapp/tsconfig.app.json",
               "apps/fapp/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/fapp/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/fapp/**"]
           }
         },
         "test": {
@@ -186,13 +183,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/fapp-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/fapp-e2e/**"
-            ]
+            "tsConfig": ["apps/fapp-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/fapp-e2e/**"]
           }
         }
       }
@@ -325,9 +317,7 @@
               "apps/ionic-fapp/tsconfig.spec.json",
               "apps/ionic-fapp/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -499,9 +489,7 @@
               "apps/ionic-web-fapp/tsconfig.spec.json",
               "apps/ionic-web-fapp/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -558,10 +546,7 @@
               "libs/shared/util-auth/tsconfig.lib.json",
               "libs/shared/util-auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/util-auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/util-auth/**"]
           }
         },
         "test": {
@@ -592,10 +577,7 @@
               "libs/shared/util-users/tsconfig.lib.json",
               "libs/shared/util-users/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/util-users/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/util-users/**"]
           }
         },
         "test": {
@@ -626,10 +608,7 @@
               "libs/shared/ui/tsconfig.lib.json",
               "libs/shared/ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
           }
         },
         "test": {
@@ -638,6 +617,161 @@
             "jestConfig": "libs/shared/ui/jest.config.js",
             "tsConfig": "libs/shared/ui/tsconfig.spec.json",
             "setupFile": "libs/shared/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "auth-ui": {
+      "projectType": "library",
+      "root": "libs/auth/ui",
+      "sourceRoot": "libs/auth/ui/src",
+      "prefix": "fapp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth/ui/tsconfig.lib.json",
+              "libs/auth/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/ui/jest.config.js",
+            "tsConfig": "libs/auth/ui/tsconfig.spec.json",
+            "setupFile": "libs/auth/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "auth-api": {
+      "projectType": "library",
+      "root": "libs/auth/api",
+      "sourceRoot": "libs/auth/api/src",
+      "prefix": "fapp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth/api/tsconfig.lib.json",
+              "libs/auth/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/api/jest.config.js",
+            "tsConfig": "libs/auth/api/tsconfig.spec.json",
+            "setupFile": "libs/auth/api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "auth-feature": {
+      "projectType": "library",
+      "root": "libs/auth/feature",
+      "sourceRoot": "libs/auth/feature/src",
+      "prefix": "fapp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth/feature/tsconfig.lib.json",
+              "libs/auth/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/feature/jest.config.js",
+            "tsConfig": "libs/auth/feature/tsconfig.spec.json",
+            "setupFile": "libs/auth/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "libs-auth-data-access": {
+      "projectType": "library",
+      "root": "libs/libs/auth/data-access",
+      "sourceRoot": "libs/libs/auth/data-access/src",
+      "prefix": "fapp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/libs/auth/data-access/tsconfig.lib.json",
+              "libs/libs/auth/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/libs/auth/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/libs/auth/data-access/jest.config.js",
+            "tsConfig": "libs/libs/auth/data-access/tsconfig.spec.json",
+            "setupFile": "libs/libs/auth/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "auth-data-access": {
+      "projectType": "library",
+      "root": "libs/auth/data-access",
+      "sourceRoot": "libs/auth/data-access/src",
+      "prefix": "fapp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth/data-access/tsconfig.lib.json",
+              "libs/auth/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/data-access/jest.config.js",
+            "tsConfig": "libs/auth/data-access/tsconfig.spec.json",
+            "setupFile": "libs/auth/data-access/src/test-setup.ts"
           }
         }
       },

@@ -1,2 +1,1 @@
-export * from './lib/auth-firebase/auth-firebase-component.module';
-export * from './lib/shared-ui.module';
+export * from './lib/auth-ui.module';

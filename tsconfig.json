@@ -16,11 +16,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fapp/shared/util-auth": [
-        "libs/shared/util-auth/src/index.ts"
-      ],
+      "@fapp/shared/util-auth": ["libs/shared/util-auth/src/index.ts"],
       "@fapp/shared/util-users": ["libs/shared/util-users/src/index.ts"],
-      "@fapp/shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@fapp/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@fapp/auth/ui": ["libs/auth/ui/src/index.ts"],
+      "@fapp/auth/api": ["libs/auth/api/src/index.ts"],
+      "@fapp/auth/feature": ["libs/auth/feature/src/index.ts"],
+      "@fapp/auth/data-access": ["libs/auth/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

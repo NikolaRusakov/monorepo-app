@@ -28,6 +28,18 @@
     },
     "shared-ui": {
       "tags": []
+    },
+    "auth-ui": {
+      "tags": ["scope:auth", "type:ui"]
+    },
+    "auth-api": {
+      "tags": ["scope:auth", "type:api"]
+    },
+    "auth-feature": {
+      "tags": ["scope:auth", "type:feature"]
+    },
+    "auth-data-access": {
+      "tags": ["scope:auth","type:data-access"]
     }
   }
 }

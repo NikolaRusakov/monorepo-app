@@ -73,7 +73,11 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.9.1",
+    "@ngrx/store": "8.5.0",
+    "@ngrx/effects": "8.5.0",
+    "@ngrx/entity": "8.5.0",
+    "@ngrx/router-store": "8.5.0"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.803.3",
@@ -118,7 +122,9 @@
     "@nstudio/ionic": "8.0.15",
     "@nstudio/angular": "8.0.15",
     "@nstudio/web-angular": "8.0.15",
-    "tslint-config-prettier": "^1.15.0"
+    "tslint-config-prettier": "^1.15.0",
+    "@ngrx/schematics": "8.5.0",
+    "@ngrx/store-devtools": "8.5.0"
   },
   "xplat": {
     "prefix": "fapp",

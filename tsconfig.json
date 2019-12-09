@@ -15,7 +15,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@fapp/shared/util-auth": [
+        "libs/shared/util-auth/src/index.ts"
+      ],
+      "@fapp/shared/util-users": ["libs/shared/util-users/src/index.ts"],
+      "@fapp/shared/ui": ["libs/shared/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

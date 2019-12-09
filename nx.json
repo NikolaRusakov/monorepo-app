@@ -19,6 +19,15 @@
     },
     "ionic-web-fapp": {
       "tags": []
+    },
+    "shared-util-auth": {
+      "tags": []
+    },
+    "shared-util-users": {
+      "tags": []
+    },
+    "shared-ui": {
+      "tags": []
     }
   }
 }

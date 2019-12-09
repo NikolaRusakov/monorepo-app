@@ -7,7 +7,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedUtilAuthModule } from '@fapp/shared/util-auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { AngularFireModule } from '@angular/fire';
 import { AuthFirebaseComponentModule } from '@fapp/shared/ui';
@@ -29,10 +28,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     }),
     BrowserAnimationsModule,
     IonicModule.forRoot(),
-    SharedUtilAuthModule.forRoot<any>({
-      firebaseUiAuthConfig,
-      config: environment
-    }),
     AngularFireModule.initializeApp(environment.firebase),
     AuthFirebaseComponentModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)

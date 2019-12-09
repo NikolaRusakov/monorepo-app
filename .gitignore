@@ -45,3 +45,5 @@ apps/ionic-fapp/www/
 functions/node_modules/
 .firebase/
 .firebase/
+.firebase/
+.env

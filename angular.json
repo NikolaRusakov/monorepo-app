@@ -68,6 +68,14 @@
             "scripts": []
           },
           "configurations": {
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fapp/src/environments/environment.ts",
+                  "with": "apps/fapp/src/environments/.env"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -107,6 +115,9 @@
             "browserTarget": "fapp:build"
           },
           "configurations": {
+            "local": {
+              "browserTarget": "fapp:build:local"
+            },
             "production": {
               "browserTarget": "fapp:build:production"
             }

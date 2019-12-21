@@ -82,3 +82,24 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+
+## Firebase tips
+
+- export firestore data on GCP
+
+```bash
+   gcloud firestore export gs://fotbalek-app.appspot.com/firestore-exports
+```
+
+- copy dumped data to local file system
+
+```bash
+   gsutil cp -r gs://fotbalek-app.appspot.com/firestore-exports .
+```
+
+- to run local Firestore with seeded data
+
+```bash
+   java -jar ~/.cache/firebase/emulators/cloud-firestore-emulator-v1.10.2.jar \
+   --seed_from_export=firestore-exports/firestore-exports.overall_export_metadata
+```

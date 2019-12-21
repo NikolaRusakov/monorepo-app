@@ -10,6 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { AngularFireModule } from '@angular/fire';
 import { AuthFirebaseComponentModule } from '@fapp/shared/ui';
+import {
+  RouterState,
+  StoreRouterConnectingModule,
+  routerReducer
+} from '@ngrx/router-store';
+import { AuthDataAccessModule } from '@fapp/auth/data-access';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { FappRoutingModule } from './fapp-routing.module';
+import { HomeModule } from './home/home.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -23,16 +35,36 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
-    BrowserAnimationsModule,
+    StoreModule.forRoot({ router: routerReducer }),
+    EffectsModule.forRoot([]),
+    FappRoutingModule,
+    HomeModule,
     IonicModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AuthDataAccessModule,
     AuthFirebaseComponentModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    // {
+    //   provide: FirestoreSettingsToken,
+    //   useValue: environment.production ? undefined : {
+    //     host: 'localhost:8080',
+    //     ssl: false
+    //   }
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

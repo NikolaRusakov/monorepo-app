@@ -12,7 +12,6 @@ export class UsersService extends EntityCollectionServiceBase<Users> {
   }
 }
 
-
 // // entity metadata
 // EntityMetadataMap = {
 //   Container: {

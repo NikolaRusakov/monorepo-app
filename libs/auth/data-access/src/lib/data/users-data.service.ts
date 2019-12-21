@@ -103,5 +103,4 @@ export class UsersDataService<T> extends EntityCollectionDataService<Users> {
     }
     return undefined;
   }
-
 }

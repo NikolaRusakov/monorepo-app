@@ -1,3 +1,8 @@
 export interface User {
-  id: string;
+  docId: string;
+  uid: string;
+  displayName: string;
+  providerId: string;
+  photoUrl: string;
+  email: string;
 }

@@ -48,6 +48,4 @@ export const deleteUsers = createAction(
   props<{ ids: string[] }>()
 );
 
-export const clearUsers = createAction(
-  '[User/API] Clear Users'
-);
+export const clearUsers = createAction('[User/API] Clear Users');

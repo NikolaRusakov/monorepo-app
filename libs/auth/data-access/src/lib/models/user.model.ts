@@ -1,8 +1,5 @@
-export interface User {
+import { UserInfo } from 'firebase';
+
+export interface User extends UserInfo {
   docId: string;
-  uid: string;
-  displayName: string;
-  providerId: string;
-  photoUrl: string;
-  email: string;
 }

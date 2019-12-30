@@ -3,6 +3,13 @@ import { Update } from '@ngrx/entity';
 
 import { User } from '../models/user.model';
 
+export const saveLoggedUser = createAction(
+  '[User/API] Login User',
+  props<{ user: User }>()
+);
+
+export const logoutUser = createAction('[User/API] Logout User');
+
 export const loadUsers = createAction(
   '[User/API] Load Users',
   props<{ users: User[] }>()

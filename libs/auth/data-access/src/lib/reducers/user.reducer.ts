@@ -8,6 +8,7 @@ export const usersFeatureKey = 'users';
 export interface State extends EntityState<User> {
   // additional entities state properties
   collectionId: string;
+  curUser: User;
 }
 
 export function selectUserId(a: User): string {
@@ -25,7 +26,16 @@ export const adapter: EntityAdapter<User> = createEntityAdapter<User>({
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
-  collectionId: ''
+  collectionId: '',
+  curUser: {
+    uid: '',
+    docId: '',
+    displayName: '',
+    phoneNumber: '',
+    photoURL: '',
+    email: '',
+    providerId: ''
+  }
 });
 
 const userReducer = createReducer(
@@ -36,6 +46,14 @@ const userReducer = createReducer(
   on(UserActions.upsertUser, (state, action) =>
     adapter.upsertOne(action.user, state)
   ),
+  on(UserActions.saveLoggedUser, (state, { user }) => ({
+    ...state,
+    curUser: { ...user }
+  })),
+  on(UserActions.logoutUser, state => ({
+    ...state,
+    curUser: { ...initialState.curUser }
+  })),
   on(UserActions.addUsers, (state, action) =>
     adapter.addMany(action.users, state)
   ),

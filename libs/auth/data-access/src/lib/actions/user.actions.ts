@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-
-import { User } from '../models/user.model';
+import { User } from '@fapp/auth/domain';
 
 export const saveLoggedUser = createAction(
   '[User/API] Login User',
@@ -9,6 +8,8 @@ export const saveLoggedUser = createAction(
 );
 
 export const logoutUser = createAction('[User/API] Logout User');
+
+export const tryLogoutUser = createAction('[User/API] Try Logout User');
 
 export const loadUsers = createAction(
   '[User/API] Load Users',

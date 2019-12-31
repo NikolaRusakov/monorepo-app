@@ -11,15 +11,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 
+import { switchMap, map, tap } from 'rxjs/operators';
+import { User } from '@fapp/auth/domain';
 import {
-  addUsers,
   loadUsers,
   logoutUser,
   saveLoggedUser,
-  upsertUsers
+  upsertUsers,
+  tryLogoutUser
 } from '../actions/user.actions';
-import { switchMap, map, tap } from 'rxjs/operators';
-import { User } from '../models/user.model';
 
 @Injectable()
 export class UserEffects {
@@ -31,7 +31,7 @@ export class UserEffects {
 
   loggedInUser$ = createEffect(() =>
     // this.actions$.pipe(
-    // ofType(loggedUser),
+    // ofType(loggedUser$),
     this.afAuth.authState.pipe(
       tap(console.log),
       map((user: AFUser) =>
@@ -39,6 +39,14 @@ export class UserEffects {
           ? saveLoggedUser({ user: { ...user.providerData[0], docId: '' } })
           : logoutUser()
       )
+    )
+  );
+
+  logoutUser = createEffect(() =>
+    this.actions$.pipe(
+      ofType(tryLogoutUser),
+      map(async () => this.afAuth.auth.signOut()),
+      map(logoutUser)
     )
   );
 

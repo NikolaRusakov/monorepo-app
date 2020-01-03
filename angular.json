@@ -80,7 +80,7 @@
               "fileReplacements": [
                 {
                   "replace": "apps/fapp/src/environments/environment.ts",
-                  "with": "apps/fapp/src/environments/environment.prod.ts"
+                  "with": "apps/fapp/src/environments/.env-prod"
                 }
               ],
               "optimization": true,
@@ -136,7 +136,10 @@
               "apps/fapp/tsconfig.app.json",
               "apps/fapp/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/fapp/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/fapp/**"
+            ]
           }
         },
         "test": {
@@ -170,6 +173,74 @@
               "browserTarget": "app:build:production"
             }
           }
+        },
+        "shell-server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/fapp/fapp-server",
+            "main": "apps/fapp/src/main.server.ts",
+            "tsConfig": "apps/fapp/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "src": "apps/fapp/src/environments/.env",
+                  "replaceWith": "apps/fapp/src/environments/.env"
+                }
+              ]
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/fapp/fapp-server",
+            "main": "apps/fapp/src/main.server.ts",
+            "tsConfig": "apps/fapp/tsconfig.server.json"
+          },
+          "configurations": {
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fapp/src/environments/environment.ts",
+                  "replaceWith": "apps/fapp/src/environments/.env"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fapp/src/environments/environment.ts",
+                  "with": "apps/fapp/src/environments/.env-prod"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "fapp:build",
+            "serverTarget": "fapp:server:local",
+            "route": "home"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fapp:build:production",
+              "serverTarget": "fapp:server:production"
+            }
+          }
         }
       }
     },
@@ -194,8 +265,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/fapp-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/fapp-e2e/**"]
+            "tsConfig": [
+              "apps/fapp-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/fapp-e2e/**"
+            ]
           }
         }
       }
@@ -328,7 +404,9 @@
               "apps/ionic-fapp/tsconfig.spec.json",
               "apps/ionic-fapp/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -500,7 +578,9 @@
               "apps/ionic-web-fapp/tsconfig.spec.json",
               "apps/ionic-web-fapp/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -557,7 +637,10 @@
               "libs/shared/util-auth/tsconfig.lib.json",
               "libs/shared/util-auth/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/util-auth/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/util-auth/**"
+            ]
           }
         },
         "test": {
@@ -588,7 +671,10 @@
               "libs/shared/util-users/tsconfig.lib.json",
               "libs/shared/util-users/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/util-users/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/util-users/**"
+            ]
           }
         },
         "test": {
@@ -619,7 +705,10 @@
               "libs/shared/ui/tsconfig.lib.json",
               "libs/shared/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui/**"
+            ]
           }
         },
         "test": {
@@ -650,7 +739,10 @@
               "libs/auth/ui/tsconfig.lib.json",
               "libs/auth/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/ui/**"
+            ]
           }
         },
         "test": {
@@ -681,7 +773,10 @@
               "libs/auth/api/tsconfig.lib.json",
               "libs/auth/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/api/**"
+            ]
           }
         },
         "test": {
@@ -712,7 +807,10 @@
               "libs/auth/feature/tsconfig.lib.json",
               "libs/auth/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/feature/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/feature/**"
+            ]
           }
         },
         "test": {
@@ -743,7 +841,10 @@
               "libs/auth/data-access/tsconfig.lib.json",
               "libs/auth/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/data-access/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/data-access/**"
+            ]
           }
         },
         "test": {
@@ -774,7 +875,10 @@
               "libs/auth/domain/tsconfig.lib.json",
               "libs/auth/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/domain/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/domain/**"
+            ]
           }
         },
         "test": {

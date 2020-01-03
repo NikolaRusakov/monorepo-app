@@ -1,5 +1,5 @@
 <firebase-ui
+  *ngIf="isBrowser"
   (signInSuccessWithAuthResult)="onSuccessCb($event)"
   (signInFailure)="onErrorCb($event)"
 ></firebase-ui>
-

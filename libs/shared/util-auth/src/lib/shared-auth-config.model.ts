@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
+import { FirebaseOptions } from '@angular/fire';
 
-export interface AuthConfig {
+export interface AuthConfig extends FirebaseOptions {
   apiKey: string;
   authDomain: string;
   databaseURL: string;

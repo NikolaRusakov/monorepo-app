@@ -2,12 +2,15 @@ import {
   Component,
   ChangeDetectionStrategy,
   Output,
-  EventEmitter
+  EventEmitter,
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
 import {
   FirebaseUISignInSuccessWithAuthResult,
   FirebaseUISignInFailure
 } from 'firebaseui-angular';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'mapp-auth-firebase',
@@ -20,9 +23,13 @@ export class AuthFirebaseComponent {
     FirebaseUISignInSuccessWithAuthResult
   >();
   @Output() loginError = new EventEmitter<FirebaseUISignInFailure>();
-  constructor() // @Inject(SharedUtilAuthService) listService: SharedUtilAuthService
-  // private listService: SharedUtilAuthService
-  {}
+  isBrowser;
+
+  constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: {} // @Inject(SharedUtilAuthService) listService: SharedUtilAuthService // private listService: SharedUtilAuthService
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   onSuccessCb(userData: FirebaseUISignInSuccessWithAuthResult) {
     this.loginSuccess.emit(userData);

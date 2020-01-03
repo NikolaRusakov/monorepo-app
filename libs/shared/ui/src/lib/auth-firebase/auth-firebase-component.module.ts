@@ -3,7 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AuthFirebaseComponent } from './auth-firebase.component';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+// import firebase from 'firebase/app';
+// import 'firebase/auth'
+// import firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
+// import firebase  from 'firebase/app';
 
+console.log(firebase.auth);
 const firebaseUiAuthConf: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [

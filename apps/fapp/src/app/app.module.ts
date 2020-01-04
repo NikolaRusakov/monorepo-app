@@ -66,10 +66,12 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     // {
     //   provide: FirestoreSettingsToken,
-    //   useValue: environment.production ? undefined : {
-    //     host: 'localhost:8080',
-    //     ssl: false
-    //   }
+    //   useValue: environment.production
+    //     ? undefined
+    //     : {
+    //         host: 'localhost:8080',
+    //         ssl: false
+    //       }
     // }
   ],
   bootstrap: [AppComponent]

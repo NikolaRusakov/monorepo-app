@@ -20,4 +20,4 @@ import {
   providers: [AuthFacade],
   exports: [UserAvatarComponent]
 })
-export class UserAvatarModule {}
+export class UserAvatarComponentModule {}

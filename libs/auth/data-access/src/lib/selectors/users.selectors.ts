@@ -9,6 +9,14 @@ export const {
 } = adapter.getSelectors();
 const $selectUsersState = createFeatureSelector<UserState>(usersFeatureKey);
 
+
+export const getUsersClassesEntitiesState = createSelector(
+  $selectUsersState,
+  state => state // vehicleFinder -> vehicleClasses (ids, entities, selectedVehicleClassId)
+);
+
+export const selectAllUsers = createSelector(getUsersClassesEntitiesState, selectAll); // vehicleFinder -> vehicleClasses (ids, entities, selectedVehicleClassId) -> selectAll
+
 // export const $$users=  ($id: Selector<any, string | undefined>) => createSelector($selectUsersState)
 export const $curUser = createSelector(
   $selectUsersState,

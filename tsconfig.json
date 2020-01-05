@@ -22,7 +22,8 @@
       "@fapp/auth/ui": ["libs/auth/ui/src/index.ts"],
       "@fapp/auth/api": ["libs/auth/api/src/index.ts"],
       "@fapp/auth/feature": ["libs/auth/feature/src/index.ts"],
-      "@fapp/auth/data-access": ["libs/auth/data-access/src/index.ts"]
+      "@fapp/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@fapp/auth/domain": ["libs/auth/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

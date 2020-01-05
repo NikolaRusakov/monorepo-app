@@ -1,13 +1,14 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { User } from '../models/user.model';
 import * as UserActions from '../actions/user.actions';
+import { User } from '@fapp/auth/domain';
 
 export const usersFeatureKey = 'users';
 
-export interface State extends EntityState<User> {
+export interface UserState extends EntityState<User> {
   // additional entities state properties
   collectionId: string;
+  curUser: User;
 }
 
 export function selectUserId(a: User): string {
@@ -23,9 +24,18 @@ export const adapter: EntityAdapter<User> = createEntityAdapter<User>({
   sortComparer: sortByName
 });
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: UserState = adapter.getInitialState({
   // additional entity state properties
-  collectionId: ''
+  collectionId: '',
+  curUser: {
+    uid: '',
+    docId: '',
+    displayName: '',
+    phoneNumber: '',
+    photoURL: '',
+    email: '',
+    providerId: ''
+  }
 });
 
 const userReducer = createReducer(
@@ -36,6 +46,14 @@ const userReducer = createReducer(
   on(UserActions.upsertUser, (state, action) =>
     adapter.upsertOne(action.user, state)
   ),
+  on(UserActions.saveLoggedUser, (state, { user }) => ({
+    ...state,
+    curUser: { ...user }
+  })),
+  on(UserActions.logoutUser, state => ({
+    ...state,
+    curUser: null
+  })),
   on(UserActions.addUsers, (state, action) =>
     adapter.addMany(action.users, state)
   ),
@@ -60,13 +78,6 @@ const userReducer = createReducer(
   on(UserActions.clearUsers, state => adapter.removeAll(state))
 );
 
-export function reducer(state: State | undefined, action: Action) {
+export function reducer(state: UserState | undefined, action: Action) {
   return userReducer(state, action);
 }
-
-export const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal
-} = adapter.getSelectors();

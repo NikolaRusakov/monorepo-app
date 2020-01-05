@@ -39,7 +39,10 @@
       "tags": ["scope:auth", "type:feature"]
     },
     "auth-data-access": {
-      "tags": ["scope:auth","type:data-access"]
+      "tags": ["scope:auth", "type:data-access"]
+    },
+    "auth-domain": {
+      "tags": []
     }
   }
 }

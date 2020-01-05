@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { AuthFacade, User } from '@fapp/auth/domain';
 
 @Component({
   selector: 'fapp-home',
@@ -6,11 +7,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  users$ = this.userFacade.users$;
 
-  constructor() { }
+  constructor(private userFacade: AuthFacade) {}
 
-  ngOnInit() {
+  identifyUser(_: number, card: User): string {
+    return card.uid;
   }
-
 }

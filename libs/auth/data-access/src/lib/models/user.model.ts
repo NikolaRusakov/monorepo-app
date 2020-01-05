@@ -3,6 +3,6 @@ export interface User {
   uid: string;
   displayName: string;
   providerId: string;
-  photoUrl: string;
+  photoURL: string;
   email: string;
 }

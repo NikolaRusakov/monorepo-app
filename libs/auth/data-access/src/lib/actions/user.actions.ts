@@ -1,7 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
+import { User } from '@fapp/auth/domain';
 
-import { User } from '../models/user.model';
+export const saveLoggedUser = createAction(
+  '[User/API] Login User',
+  props<{ user: User }>()
+);
+
+export const logoutUser = createAction('[User/API] Logout User');
+
+export const tryLogoutUser = createAction('[User/API] Try Logout User');
 
 export const loadUsers = createAction(
   '[User/API] Load Users',

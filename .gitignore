@@ -42,7 +42,6 @@ Thumbs.db
 apps/ionic-fapp/node_modules/
 apps/ionic-fapp/android/
 apps/ionic-fapp/www/
-firestore-exports/
+functions/node_modules/
 .firebase/
 .env
-firestore-debug.log

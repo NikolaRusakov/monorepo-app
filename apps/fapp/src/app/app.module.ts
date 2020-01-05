@@ -21,12 +21,7 @@ import { StoreModule } from '@ngrx/store';
 import { FappRoutingModule } from './fapp-routing.module';
 import { HomeModule } from './home/home.module';
 import { EffectsModule } from '@ngrx/effects';
-import {
-  AngularFirestoreModule,
-  FirestoreSettingsToken
-} from '@angular/fire/firestore';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -61,17 +56,13 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     // {
     //   provide: FirestoreSettingsToken,
-    //   useValue: environment.production
-    //     ? undefined
-    //     : {
-    //         host: 'localhost:8080',
-    //         ssl: false
-    //       }
+    //   useValue: environment.production ? undefined : {
+    //     host: 'localhost:8080',
+    //     ssl: false
+    //   }
     // }
   ],
   bootstrap: [AppComponent]

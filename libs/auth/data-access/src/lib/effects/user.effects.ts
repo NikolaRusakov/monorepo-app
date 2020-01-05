@@ -1,54 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
-  AngularFirestore
-  // AngularFirestoreCollection
+  AngularFirestore,
+  AngularFirestoreCollection
 } from '@angular/fire/firestore';
-
-import { User as AFUser, auth } from 'firebase/app';
-
-import { AngularFireAuth } from '@angular/fire/auth';
-
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 
+import { addUsers, loadUsers, upsertUsers } from '../actions/user.actions';
 import { switchMap, map, tap } from 'rxjs/operators';
-import { User } from '@fapp/auth/domain';
-import {
-  loadUsers,
-  logoutUser,
-  saveLoggedUser,
-  upsertUsers,
-  tryLogoutUser
-} from '../actions/user.actions';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class UserEffects {
-  constructor(
-    private actions$: Actions,
-    private afs: AngularFirestore,
-    public afAuth: AngularFireAuth
-  ) {}
-
-  loggedInUser$ = createEffect(() =>
-    // this.actions$.pipe(
-    // ofType(loggedUser$),
-    this.afAuth.authState.pipe(
-      tap(console.log),
-      map((user: AFUser) =>
-        user != null && user.providerData != null
-          ? saveLoggedUser({ user: { ...user.providerData[0], docId: '' } })
-          : logoutUser()
-      )
-    )
-  );
-
-  logoutUser = createEffect(() =>
-    this.actions$.pipe(
-      ofType(tryLogoutUser),
-      map(async () => this.afAuth.auth.signOut()),
-      map(logoutUser)
-    )
-  );
+  constructor(private actions$: Actions, private afs: AngularFirestore) {}
 
   loadUsers$ = createEffect(
     () =>

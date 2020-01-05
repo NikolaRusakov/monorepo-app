@@ -10,7 +10,7 @@ import {
 } from 'firebaseui-angular';
 
 @Component({
-  selector: 'mapp-auth-firebase',
+  selector: 'fapp-auth-firebase',
   templateUrl: './auth-firebase.component.html',
   styleUrls: ['./auth-firebase.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

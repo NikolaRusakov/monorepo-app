@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { UserAvatarComponentModule } from '@fapp/auth/feature';
 import { UserCardComponentModule } from '@fapp/shared/ui';
 import { IonicModule } from '@ionic/angular';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -12,6 +13,7 @@ import { IonicModule } from '@ionic/angular';
     CommonModule,
     IonicModule.forRoot(),
     RouterModule.forChild([{ path: '', component: HomeComponent }]),
+    MatGridListModule,
     UserAvatarComponentModule,
     UserCardComponentModule
   ],

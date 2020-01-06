@@ -44,5 +44,5 @@ apps/ionic-fapp/android/
 apps/ionic-fapp/www/
 firestore-exports/
 .firebase/
-.env
+.env*
 firestore-debug.log

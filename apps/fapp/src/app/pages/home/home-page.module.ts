@@ -11,7 +11,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    IonicModule.forRoot(),
+    IonicModule,
     RouterModule.forChild([{ path: '', component: HomeComponent }]),
     MatGridListModule,
     UserAvatarComponentModule,
@@ -19,4 +19,4 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ],
   exports: [HomeComponent]
 })
-export class HomeModule {}
+export class HomePageModule {}

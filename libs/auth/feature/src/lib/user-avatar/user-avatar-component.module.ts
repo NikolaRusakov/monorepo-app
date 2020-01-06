@@ -13,7 +13,7 @@ import {
   declarations: [UserAvatarComponent],
   imports: [
     CommonModule,
-    IonicModule.forRoot(),
+    IonicModule,
     AuthFirebaseComponentModule,
     LetDirectiveModule
   ],

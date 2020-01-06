@@ -40,6 +40,9 @@
     },
     "auth-domain": {
       "tags": ["scope:auth", "type:domain"]
+    },
+    "auth-shell": {
+      "tags": ["scope:auth", "type:shell"]
     }
   }
 }

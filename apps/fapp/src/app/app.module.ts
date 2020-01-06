@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
+import { NxModule } from '@nrwl/nx';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -15,11 +16,9 @@ import {
   StoreRouterConnectingModule,
   routerReducer
 } from '@ngrx/router-store';
-import { AuthDataAccessModule } from '@fapp/auth/data-access';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { FappRoutingModule } from './fapp-routing.module';
-import { HomeModule } from './home/home.module';
 import { EffectsModule } from '@ngrx/effects';
 import {
   AngularFirestoreModule,
@@ -27,6 +26,7 @@ import {
 } from '@angular/fire/firestore';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthDomainModule } from '@fapp/auth/domain';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -44,10 +44,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
+    NxModule.forRoot(),
     StoreModule.forRoot({ router: routerReducer }),
     EffectsModule.forRoot([]),
     FappRoutingModule,
-    HomeModule,
     IonicModule.forRoot(),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full }),
     StoreDevtoolsModule.instrument({
@@ -56,7 +56,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AuthDataAccessModule,
+    AuthDomainModule.forRoot(),
     AuthFirebaseComponentModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],

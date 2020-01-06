@@ -1,7 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthDataAccessModule } from './infrastructure';
+import { AuthFacade } from './application-services';
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule, AuthDataAccessModule]
 })
-export class AuthDomainModule {}
+export class AuthDomainModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AuthDomainModule,
+      providers: [AuthFacade]
+    };
+  }
+}

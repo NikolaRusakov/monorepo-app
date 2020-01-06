@@ -6,7 +6,7 @@ import { LetDirectiveModule } from '../let-directive/let-directive.module';
 
 @NgModule({
   declarations: [UserCardComponent],
-  imports: [CommonModule, IonicModule.forRoot(), LetDirectiveModule],
+  imports: [CommonModule, IonicModule, LetDirectiveModule],
   exports: [UserCardComponent]
 })
 export class UserCardComponentModule {}

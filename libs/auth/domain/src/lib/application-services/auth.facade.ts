@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import {
-  UserState,
-  selectEntities,
-  loadUsers,
   $$user,
   $curUser,
+  loadUsers,
+  selectAllUsers,
   tryLogoutUser,
-  selectAllUsers
-} from '@fapp/auth/data-access';
-import { User } from '../..';
+  UserState
+} from '../infrastructure';
+import { User } from '../domain';
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
   uid: string = undefined;

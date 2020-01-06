@@ -1,3 +1,4 @@
+/*
 import * as fromUsers from '../reducers/users.reducer';
 import { $selectUsersState } from './users.selectors';
 
@@ -10,3 +11,4 @@ describe('Users Selectors', () => {
     expect(result).toEqual({});
   });
 });
+*/

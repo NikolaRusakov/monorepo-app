@@ -18,11 +18,9 @@
 </ion-card>
 
 <ng-template #header let-user="user">
-  {{user|json}}
   <ion-item>
     <ion-avatar slot="start">
-<!--      <img [src]="user?.photoURL" />-->
-        <ion-img [src]="user?.photoURL"></ion-img>
+      <ion-img [src]="user?.photoURL"></ion-img>
     </ion-avatar>
     <ion-label>{{ user?.email }}</ion-label>
   </ion-item>

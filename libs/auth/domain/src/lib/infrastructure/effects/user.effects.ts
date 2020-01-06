@@ -20,13 +20,16 @@ import {
   upsertUsers,
   tryLogoutUser
 } from '../actions/user.actions';
+import { DataPersistence } from '@nrwl/nx';
+import { UserState } from '../reducers';
 
 @Injectable()
 export class UserEffects {
   constructor(
     private actions$: Actions,
     private afs: AngularFirestore,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private dataPersistence: DataPersistence<UserState>
   ) {}
 
   loggedInUser$ = createEffect(() =>

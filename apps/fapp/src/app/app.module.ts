@@ -27,7 +27,9 @@ import {
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthDomainModule } from '@fapp/auth/domain';
+import * as firebaseas from 'firebase';
 
+firebaseas.firestore.setLogLevel('debug');
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
@@ -44,21 +46,23 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence({
+      synchronizeTabs: true
+    }),
     NxModule.forRoot(),
     StoreModule.forRoot({ router: routerReducer }),
     EffectsModule.forRoot([]),
     FappRoutingModule,
-    IonicModule.forRoot(),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     AuthDomainModule.forRoot(),
     AuthFirebaseComponentModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    IonicModule.forRoot()
   ],
   providers: [
     StatusBar,

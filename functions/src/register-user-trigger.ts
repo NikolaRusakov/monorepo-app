@@ -11,8 +11,14 @@ export const registerUserTrigger = functions.auth
     const newUser: firestore.DocumentReference = firestore()
       .collection('users')
       .doc();
+    const { displayName, providerId, photoURL, email, uid } = providerData[0];
     await newUser.set({
-      ...providerData[0].toJSON(),
-      createdAt: metadata.creationTime
+      uid: uid ?? '',
+      displayName: displayName ?? '',
+      providerId: providerId ?? '',
+      photoURL: photoURL ?? '',
+      email: email ?? '',
+      docId: newUser.id,
+      createdAt: metadata.creationTime ?? ''
     });
   });

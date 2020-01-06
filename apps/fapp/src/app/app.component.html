@@ -1,108 +1,71 @@
-<header class="flex">
-  <img
-    alt="Nx logo"
-    width="75"
-    src="https://nx.dev/assets/images/nx-logo-white.svg"
-  />
-  <h1>Welcome to {{ title }}!</h1>
-</header>
-<fapp-auth-firebase></fapp-auth-firebase>
-<main>
-  <h2>Resources &amp; Tools</h2>
-  <p>
-    Thank you for using and showing some ♥ for Nx.
-  </p>
-  <div class="flex github-star-container">
-    <a
-      href="https://github.com/nrwl/nx"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      If you like Nx, please give it a star:
-      <div class="github-star-badge">
-        <svg
-          class="material-icons"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <path d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-          />
-        </svg>
-        Star
-      </div>
-    </a>
+<ion-app>
+  <ion-menu side="start" contentId="my-content">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="chatbubbles" slot="start"></ion-icon>
+          <ion-label>Messages</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="settings" slot="start"></ion-icon>
+          <ion-label>Settings</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="my-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button expand="block"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-content>
   </div>
-  <p>
-    Here are some links to help you get started.
-  </p>
-  <ul class="resources">
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://connect.nrwl.io/app/courses/nx-workspaces/intro"
-      >
-        Nx video course
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://nx.dev/angular/getting-started/what-is-nx"
-      >
-        Nx video tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://nx.dev/angular/tutorial/01-create-application"
-      >
-        Interactive tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a class="resource flex" href="https://connect.nrwl.io/">
-        <img
-          height="36"
-          alt="Nrwl Connect"
-          src="https://connect.nrwl.io/assets/img/CONNECT_ColorIcon.png"
-        />
-        <span class="gutter-left">Nrwl Connect</span>
-      </a>
-    </li>
-  </ul>
-  <h2>Next Steps</h2>
-  <p>Here are some things you can do with Nx.</p>
-  <details open>
-    <summary>Add UI library</summary>
-    <pre>
-# Generate UI lib
-ng g @nrwl/angular:lib ui
-
-# Add a component
-ng g @nrwl/angular:component xyz --project ui</pre
-    >
-  </details>
-  <details>
-    <summary>View dependency graph</summary>
-    <pre>nx dep-graph</pre>
-  </details>
-  <details>
-    <summary>Run affected commands</summary>
-    <pre>
-# see what's been affected by changes
-ng affected:dep-graph
-
-# run tests for current changes
-ng affected:test
-
-# run e2e tests for current changes
-ng affected:e2e
-</pre
-    >
-  </details>
-</main>
+  <!--  <ion-split-pane contentId="main-content">
+    <ion-header>
+      <ion-title>Page Title</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-header>
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{ p.title }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>-->
+</ion-app>

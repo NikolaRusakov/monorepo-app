@@ -4,7 +4,7 @@ import { AuthFirebaseComponent } from './auth-firebase.component';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-const firebaseUiAuthConf: firebaseui.auth.Config = {
+export const firebaseUiAuthConf: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -33,7 +33,8 @@ const firebaseUiAuthConf: firebaseui.auth.Config = {
   imports: [
     CommonModule,
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConf)
+    FirebaseUIModule
+    // FirebaseUIModule.forRoot(firebaseUiAuthConf)
   ],
   exports: [AuthFirebaseComponent]
 })

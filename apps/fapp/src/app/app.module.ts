@@ -60,9 +60,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       logOnly: environment.production
     }),
     AuthDomainModule.forRoot(),
+    IonicModule.forRoot(),
     AuthFirebaseComponentModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    IonicModule.forRoot()
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
     StatusBar,

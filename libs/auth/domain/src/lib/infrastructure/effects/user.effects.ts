@@ -19,9 +19,10 @@ import {
   saveLoggedUser,
   upsertUsers,
   tryLogoutUser
-} from '../actions/user.actions';
+} from '../actions';
 import { DataPersistence } from '@nrwl/nx';
 import { UserState } from '../reducers';
+import { firestore } from 'firebase';
 
 @Injectable()
 export class UserEffects {
@@ -32,14 +33,25 @@ export class UserEffects {
     private dataPersistence: DataPersistence<UserState>
   ) {}
 
+  // loggedInUser$ = createEffect(() =>
+  //
+  //     ofType(saveLoggedUser),
+
   loggedInUser$ = createEffect(() =>
     // this.actions$.pipe(
     // ofType(loggedUser$),
     this.afAuth.authState.pipe(
       tap(console.log),
       map((user: AFUser) =>
-        user != null && user.providerData != null
-          ? saveLoggedUser({ user: { ...user.providerData[0], docId: '' } })
+        user?.providerData && user?.metadata
+          ? saveLoggedUser({
+              user: {
+                ...user.providerData[0],
+                createdAt: user?.metadata?.creationTime,
+                updatedAt: '',
+                docId: ''
+              }
+            })
           : logoutUser()
       )
     )

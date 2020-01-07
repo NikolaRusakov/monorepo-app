@@ -1,7 +1,7 @@
-import { UserInfo, firestore } from 'firebase';
+import { UserInfo } from 'firebase';
 
 export interface User extends UserInfo {
   docId: string;
-  createdAt: firestore.Timestamp;
-  updatedAt: firestore.Timestamp;
+  createdAt: string;
+  updatedAt: string;
 }

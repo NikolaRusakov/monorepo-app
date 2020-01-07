@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as UserActions from '../actions/user.actions';
 import { User } from '@fapp/auth/domain';
+import { firestore } from 'firebase';
 
 export const usersFeatureKey = 'users';
 
@@ -9,6 +10,8 @@ export interface UserState extends EntityState<User> {
   // additional entities state properties
   collectionId: string;
   curUser: User;
+  // authState: ['logout', 'login', 'patched'];
+  // callState:[];
 }
 
 export function selectUserId(a: User): string {
@@ -34,8 +37,15 @@ export const initialState: UserState = adapter.getInitialState({
     phoneNumber: '',
     photoURL: '',
     email: '',
-    providerId: ''
-  }
+    providerId: '',
+    createdAt: firestore.Timestamp.now()
+      .toDate()
+      .toUTCString(),
+    updatedAt: firestore.Timestamp.now()
+      .toDate()
+      .toUTCString()
+  },
+  // authState: ['logout']
 });
 
 const userReducer = createReducer(

@@ -3,14 +3,17 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as UserActions from '../actions/user.actions';
 import { User } from '@fapp/auth/domain';
 import { firestore } from 'firebase';
+import { CallState, callStateReducer } from '@fapp/shared/util';
+import { usersCallStateTriggers } from './user.triggers';
+import { AuthState } from '../../domain/auth.state';
 
 export const usersFeatureKey = 'users';
 
-export interface UserState extends EntityState<User> {
+export interface UserState extends EntityState<User>, CallState {
   // additional entities state properties
   collectionId: string;
   curUser: User;
-  // authState: ['logout', 'login', 'patched'];
+  authState: [AuthState, AuthState?, AuthState?];
   // callState:[];
 }
 
@@ -45,6 +48,11 @@ export const initialState: UserState = adapter.getInitialState({
       .toDate()
       .toUTCString()
   },
+  callState: {
+    single: 'resting',
+    batch: 'resting'
+  },
+  authState: ['logout']
   // authState: ['logout']
 });
 
@@ -88,6 +96,9 @@ const userReducer = createReducer(
   on(UserActions.clearUsers, state => adapter.removeAll(state))
 );
 
-export function reducer(state: UserState | undefined, action: Action) {
-  return userReducer(state, action);
+export function reducer(state: UserState, action: Action) {
+  return callStateReducer(userReducer, usersCallStateTriggers)(state, action);
 }
+// export function reducer(state: UserState | undefined, action: Action) {
+//   return userReducer(state, action);
+// }

@@ -11,6 +11,25 @@ export const logoutUser = createAction('[User/API] Logout User');
 
 export const tryLogoutUser = createAction('[User/API] Try Logout User');
 
+export const loadedUser = createAction('[User/API] Loaded User');
+
+export const loadUserError = createAction(
+  '[User/API] Loaded User Error',
+  props<{ error: any }>()
+);
+
+export const loadUser = createAction(
+  '[User/API] Load User',
+  props<{ users: User }>()
+);
+
+export const loadedUsers = createAction('[User/API] Loaded Users');
+
+export const loadUsersError = createAction(
+  '[User/API] Loaded Users Error',
+  props<{ error: any }>()
+);
+
 export const loadUsers = createAction(
   '[User/API] Load Users',
   props<{ users: User[] }>()

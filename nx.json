@@ -43,6 +43,12 @@
     },
     "auth-shell": {
       "tags": ["scope:auth", "type:shell"]
+    },
+    "auth-util": {
+      "tags": []
+    },
+    "shared-util": {
+      "tags": []
     }
   }
 }

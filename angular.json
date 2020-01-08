@@ -785,6 +785,56 @@
           }
         }
       }
+    },
+    "auth-util": {
+      "root": "libs/auth/util",
+      "sourceRoot": "libs/auth/util/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth/util/tsconfig.lib.json",
+              "libs/auth/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/util/jest.config.js",
+            "tsConfig": "libs/auth/util/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "shared-util": {
+      "root": "libs/shared/util",
+      "sourceRoot": "libs/shared/util/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util/tsconfig.lib.json",
+              "libs/shared/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util/jest.config.js",
+            "tsConfig": "libs/shared/util/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
